@@ -1,17 +1,20 @@
-package logline
+package loglines
 
 import (
 	"fmt"
 	"os"
-	"strings"
+
+	"github.com/grimdork/str"
 )
 
 // Err prints formatted messages to stderr, starting with a nicely formatted timestamp.
 func Err(f string, v ...interface{}) {
-	var b strings.Builder
-	b.WriteString(NowString())
-	b.WriteRune(':')
-	b.WriteString(fmt.Sprintf(f, v...))
-	b.WriteString("\n")
-	fmt.Fprintf(os.Stderr, b.String())
+	b := str.NewStringer()
+	b.WriteStrings(
+		NowString(),
+		":",
+		fmt.Sprintf(f, v...),
+		"\n",
+	)
+	fmt.Fprintln(os.Stderr, b.String())
 }

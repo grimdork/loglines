@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	ll.Msg("Hello, world!")
+	ll.Msg("Hello, console!")
 	ll.Err("This is an error message.")
 }
 ```

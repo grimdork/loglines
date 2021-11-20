@@ -1,4 +1,4 @@
-package logline
+package loglines
 
 import (
 	"fmt"
