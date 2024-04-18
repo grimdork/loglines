@@ -14,7 +14,6 @@ func Err(f string, v ...interface{}) {
 		NowString(),
 		":",
 		fmt.Sprintf(f, v...),
-		"\n",
 	)
 	fmt.Fprintln(os.Stderr, b.String())
 }
