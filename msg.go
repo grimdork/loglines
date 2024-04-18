@@ -3,14 +3,17 @@ package loglines
 import (
 	"fmt"
 	"os"
-	"strings"
+
+	"github.com/grimdork/str"
 )
 
 // Msg prints formatted messages to stdout, starting with a nicely formatted timestamp.
 func Msg(f string, v ...interface{}) {
-	var b strings.Builder
-	b.WriteString(NowString())
-	b.WriteRune(':')
-	b.WriteString(fmt.Sprintf(f, v...))
+	b := str.NewStringer()
+	b.WriteStrings(
+		NowString(),
+		":",
+		fmt.Sprintf(f, v...),
+	)
 	fmt.Fprintln(os.Stdout, b.String())
 }
